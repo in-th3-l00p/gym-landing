@@ -24,7 +24,7 @@ export default function Header() {
                             <span className="sr-only">David Motivează</span>
                             <img
                                 alt="David Motivează"
-                                src="/logo-david-motiveaza.png"
+                                src="/logo.png"
                                 className="h-10 w-auto"
                             />
                         </a>
