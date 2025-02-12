@@ -1,9 +1,11 @@
+import About from "@/components/about";
 import Hero from "@/components/hero";
 
-export default function DavidMotiveaza() {
+export default function Landing() {
     return (
         <main>
             <Hero />
+            <About />
         </main>
     );
 }
