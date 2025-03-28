@@ -369,6 +369,301 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAboutSectionAboutSection extends Struct.SingleTypeSchema {
+  collectionName: 'about_sections';
+  info: {
+    displayName: 'About section';
+    pluralName: 'about-sections';
+    singularName: 'about-section';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category: Schema.Attribute.String & Schema.Attribute.Required;
+    content: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    images: Schema.Attribute.Component<'about-section.images', false>;
+    impact: Schema.Attribute.Component<'about-section.impact', false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::about-section.about-section'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiExerciseExercise extends Struct.CollectionTypeSchema {
+  collectionName: 'exercises';
+  info: {
+    description: '';
+    displayName: 'Exercise';
+    pluralName: 'exercises';
+    singularName: 'exercise';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    content: Schema.Attribute.Blocks &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::exercise.exercise'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    order: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<0>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    workouts: Schema.Attribute.Relation<'manyToMany', 'api::workout.workout'>;
+  };
+}
+
+export interface ApiHeroSectionHeroSection extends Struct.SingleTypeSchema {
+  collectionName: 'hero_sections';
+  info: {
+    description: '';
+    displayName: 'Hero section';
+    pluralName: 'hero-sections';
+    singularName: 'hero-section';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::hero-section.hero-section'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    subtitle: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMealPlanMealPlan extends Struct.CollectionTypeSchema {
+  collectionName: 'meal_plans';
+  info: {
+    description: '';
+    displayName: 'Meal plan';
+    pluralName: 'meal-plans';
+    singularName: 'meal-plan';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    content: Schema.Attribute.Blocks &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    cover: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::meal-plan.meal-plan'
+    >;
+    meals: Schema.Attribute.Relation<'manyToMany', 'api::meal.meal'>;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMealMeal extends Struct.CollectionTypeSchema {
+  collectionName: 'meals';
+  info: {
+    description: '';
+    displayName: 'Meal';
+    pluralName: 'meals';
+    singularName: 'meal';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    calories: Schema.Attribute.Integer;
+    carbs_g: Schema.Attribute.Integer;
+    content: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    fats_g: Schema.Attribute.Integer;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::meal.meal'>;
+    meal_plans: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::meal-plan.meal-plan'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    protein_g: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    type: Schema.Attribute.Enumeration<
+      ['breakfast', 'lunch', 'dinner', 'snack']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiWorkoutWorkout extends Struct.CollectionTypeSchema {
+  collectionName: 'workouts';
+  info: {
+    description: '';
+    displayName: 'Workout';
+    pluralName: 'workouts';
+    singularName: 'workout';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    content: Schema.Attribute.Blocks &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    cover: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    exercises: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::exercise.exercise'
+    >;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::workout.workout'
+    >;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -878,6 +1173,12 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::about-section.about-section': ApiAboutSectionAboutSection;
+      'api::exercise.exercise': ApiExerciseExercise;
+      'api::hero-section.hero-section': ApiHeroSectionHeroSection;
+      'api::meal-plan.meal-plan': ApiMealPlanMealPlan;
+      'api::meal.meal': ApiMealMeal;
+      'api::workout.workout': ApiWorkoutWorkout;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

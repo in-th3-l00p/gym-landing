@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_about_section_impacts",
+  "info": {
+    "displayName": "impact",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "first": {
+      "displayName": "impact-element",
+      "type": "component",
+      "repeatable": true,
+      "component": "about-section.impact-element"
+    },
+    "second": {
+      "type": "component",
+      "repeatable": true,
+      "component": "about-section.impact-element"
+    },
+    "third": {
+      "type": "component",
+      "repeatable": true,
+      "component": "about-section.impact-element"
+    },
+    "fourth": {
+      "type": "component",
+      "repeatable": true,
+      "component": "about-section.impact-element"
+    }
+  }
+}

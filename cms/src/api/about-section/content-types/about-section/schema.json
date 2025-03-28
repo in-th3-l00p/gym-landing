@@ -1,0 +1,40 @@
+{
+  "kind": "singleType",
+  "collectionName": "about_sections",
+  "info": {
+    "singularName": "about-section",
+    "pluralName": "about-sections",
+    "displayName": "About section"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "category": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "content": {
+      "type": "blocks",
+      "required": true
+    },
+    "impact": {
+      "type": "component",
+      "repeatable": false,
+      "component": "about-section.impact"
+    },
+    "images": {
+      "type": "component",
+      "repeatable": false,
+      "component": "about-section.images"
+    }
+  }
+}

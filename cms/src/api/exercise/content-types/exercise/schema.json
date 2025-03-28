@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "exercises",
+  "info": {
+    "singularName": "exercise",
+    "pluralName": "exercises",
+    "displayName": "Exercise",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "description": {
+      "type": "text",
+      "required": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "content": {
+      "type": "blocks",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    },
+    "order": {
+      "type": "integer",
+      "required": true,
+      "default": 0
+    },
+    "workouts": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::workout.workout",
+      "mappedBy": "exercises"
+    }
+  }
+}

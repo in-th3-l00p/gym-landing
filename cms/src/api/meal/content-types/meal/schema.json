@@ -1,0 +1,80 @@
+{
+  "kind": "collectionType",
+  "collectionName": "meals",
+  "info": {
+    "singularName": "meal",
+    "pluralName": "meals",
+    "displayName": "Meal",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "description": {
+      "type": "text",
+      "required": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "content": {
+      "type": "richtext",
+      "required": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "meal_plans": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::meal-plan.meal-plan",
+      "mappedBy": "meals"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "breakfast",
+        "lunch",
+        "dinner",
+        "snack"
+      ],
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "calories": {
+      "type": "integer"
+    },
+    "protein_g": {
+      "type": "integer"
+    },
+    "carbs_g": {
+      "type": "integer"
+    },
+    "fats_g": {
+      "type": "integer"
+    }
+  }
+}
